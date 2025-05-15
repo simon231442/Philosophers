@@ -21,6 +21,8 @@ SRC += $(SRC_DIR)/philo_core_exit.c
 SRC += $(SRC_DIR)/philo_core_init_data.c
 SRC += $(SRC_DIR)/philo_core_init_mutex.c
 SRC += $(SRC_DIR)/philo_core_init_philo.c
+
+SRC += $(SRC_DIR)/philo_core_init_print.c
 SRC += $(SRC_DIR)/philo_core_init_thread.c
 SRC += $(SRC_DIR)/philo_core_init_tracking.c
 SRC += $(SRC_DIR)/philo_core_main.c

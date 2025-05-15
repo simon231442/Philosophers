@@ -13,7 +13,7 @@
 #include "philo.h"
 
 /**
- * @brief Initialise la structure data avec les arguments et allocation.
+ * @brief Initialise la structure data avec les arguments et alloue la memoire.
  *
  * Cette fonction, appelée par main, récupère les arguments av
  * (préalablement validés) et les place dans la structure data.
@@ -49,5 +49,15 @@ int	philo_core_init_data(t_data *data, int ac, char **av)
 	data->time_to_sleep = philo_utils_atol(av[4]);
 	if (ac == 6)
 		data->meal_nb = philo_utils_atol(av[5]);
-	
+	if (!pthread_mutex_init(&data->mutex + E_PRINT, NULL))
+		return (1);
+	data->init_counter++;
+	if (!pthread_mutex_init(&data->mutex + E_SIMULATION_OVER, NULL))
+		return (1);
+	data->init_counter++;
+	data->philo_first = philo_utils_calloc(sizeof(t_philo), data->philo_nb);
+	if (!data->philo_first)
+		return (1);
+	data->init_counter++;
+	return (0);
 }
