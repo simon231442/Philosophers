@@ -15,25 +15,18 @@
 /**
  * fct qui permet a un philo d'afficher sans conflit avec d'autres
  * 
- * lorsque cette fonction est appeler pour annoncer la mort d'un philo, le flag
- * simulation_over est mis a 1 et il n'est desormais plus possible d'afficher
+ *
  */
 
-void	philo_action_print(t_philo *philo, time_t time, const char *action)
+void	philo_action_print(t_philo *philo, int buffer_name)
 {
-	int	id;
-
-	if (action[0] == 'd')
-	{
-		id = philo->meal->order->id;
-		fprintf(g_debug_file, "philo no %d est mort\n", id);
-	}
-	else
-		id = philo->id;
-	pthread_mutex_lock(&philo->mutex->mutex_print);
-	if (philo->mutex->simulation_over == 0)
-		printf("%ld %d %s\n", time - philo->mutex->time_start, id, action);
-	if (action[0] == 'd')
-		philo->mutex->simulation_over = 1;
-	pthread_mutex_unlock(&philo->mutex->mutex_print);
+	pthread_mutex_lock(&philo->data->mutex[E_PRINT]);
+	philo_utils_ritoa(philo->time_action,
+						philo->data->action_print[buffer_name].time_stamp);
+	philo_utils_ritoa(philo->id, philo->data->action_print[buffer_name].id);
+	write(1, &philo->data->action_print[buffer_name].time_stamp, BUFF_SIZE);
+	write(1, "\n", 1);
+	philo_utils_memset(&philo->data->action_print[buffer_name].time_stamp,
+						32, PRECISION_TIME + PRECISION_ID);
+	pthread_mutex_unlock(&philo->data->mutex[E_PRINT]);
 }

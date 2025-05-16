@@ -36,8 +36,8 @@
  */
 
 static void	init_philo_first(t_data *data);
-static void	init_philo_other(t_data *data);
-static int	intit_mutex_philo(t_data *data);
+static void	init_philo_others(t_data *data);
+static int	init_mutex_philo(t_data *data);
 
 int	philo_core_init_philo(t_data *data)
 {
@@ -57,7 +57,7 @@ static void	init_philo_first(t_data *data)
 	data->philo_first->next = data->philo_first + sizeof(t_philo);
 }
 
-static void	init_philo_other(t_data *data)
+static void	init_philo_others(t_data *data)
 {
 	data->philo_cursor = data->philo_first;
 	philo_utils_memcpy(data->philo_cursor, data->philo_first, sizeof(t_philo));
@@ -72,7 +72,7 @@ static void	init_philo_other(t_data *data)
 	data->philo_cursor->next = data->philo_first;
 }
 
-static int	intit_mutex_philo(t_data *data)
+static int	init_mutex_philo(t_data *data)
 {
 	data->philo_cursor = data->philo_first;
 	while (data->philo_cursor != data->philo_first)

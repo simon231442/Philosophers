@@ -42,12 +42,12 @@ int	philo_core_exit(t_data *data)
 		free(data->philo_first);
 		data->init_counter--;
 	}
-	if (data->init_counter > 1);
+	if (data->init_counter > 1)
 	{
-		pthread_mutex_destroy(&data->mutex + E_SIMULATION_OVER);
+		pthread_mutex_destroy(&data->mutex[E_SIMULATION_OVER]);
 		data->init_counter--;
 	}		
 	if (data->init_counter)
-		pthread_mutex_destroy(&data->mutex + E_PRINT);
+		pthread_mutex_destroy(&data->mutex[E_PRINT]);
 	return (1);
 }

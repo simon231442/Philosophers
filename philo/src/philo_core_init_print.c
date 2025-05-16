@@ -20,12 +20,12 @@
 void	philo_core_init_print(t_data *data)
 {
 	int			i;
-	static char	*action_type = {TAKING, EATING, SLEEPING, THINKING, DYING};
-	static int	*action_size = {TAKING_SIZE, EATING_SIZE, SLEEPING_SIZE,
+	static char	*action_type[] = {TAKING, EATING, SLEEPING, THINKING, DYING};
+	static int	action_size[] = {TAKING_SIZE, EATING_SIZE, SLEEPING_SIZE,
 								THINKING_SIZE, DYING_SIZE};
 
 	i = 0;
-	while (i <= DYING)
+	while (i <= E_DYING)
 	{
 		philo_utils_memset(data->action_print[i].time_stamp, 32, BUFF_SIZE);
 		data->action_print[i].id = 

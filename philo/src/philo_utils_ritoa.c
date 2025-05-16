@@ -12,10 +12,10 @@
 
 #include "philo.h"
 
-void	philo_utils_ritoa(time_t n, char *dest)
+char	*philo_utils_ritoa(time_t n, char *dest)
 {
 	if (n >= 10)
-		philo_utils_ritoa(n / 10, dest);
-	*dest = time + '0';
+		dest = philo_utils_ritoa(n / 10, dest);
+	*dest = (n % 10) + '0';
 	return (dest + 1);
 }

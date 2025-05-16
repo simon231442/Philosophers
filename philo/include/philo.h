@@ -13,10 +13,13 @@
 #ifndef PHILO_H
 # define PHILO_H
 # include <unistd.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include <pthread.h>
 # include <string.h>
 # include <sys/time.h>
+
+# define INT_MAX 2147483647
 
 # define TAKING "has taken a fork"
 # define TAKING_SIZE 16
@@ -29,7 +32,7 @@
 # define DYING "died"
 # define DYING_SIZE 4
 # define BUFF_SIZE 80
-# define PRECISION_TIME 10
+# define PRECISION_TIME 15
 # define PRECISION_ID 6
 
 typedef enum e_mutex_name
@@ -47,8 +50,14 @@ typedef enum e_buffer_name
 	E_DYING,
 }					t_buffer_name;
 
-struct				s_philo;
-struct				s_print;
+typedef struct s_philo t_philo;
+
+typedef struct s_print
+{
+	char			time_stamp[BUFF_SIZE];
+	char			*id;
+	char			*action;
+}					t_print;
 
 typedef struct s_data
 {
@@ -70,19 +79,12 @@ typedef struct s_philo
 	int				fork;
 	pthread_mutex_t	mutex_fork;
 	time_t			time_last_eat;
-	time_t			time_end_action;
+	time_t			time_action;
 	int				meal_to_eat;
 	pthread_t		thread;
 	t_data			*data;
 	t_philo			*next;
 }					t_philo;
-
-typedef struct s_print
-{
-	char			time_stamp[BUFF_SIZE];
-	char			*id;
-	char			*action;
-}					t_print;
 
 //initing
 int					philo_inputs_are_valid(int ac, char **av);
@@ -90,12 +92,17 @@ int					philo_core_init_data(t_data *data, int ac, char **av);
 int					philo_core_init_philo(t_data *data);
 void				philo_core_init_print(t_data *data);
 
+//action
+void				philo_action_print(t_philo *philo, int buffer_name);
+
 //utils
 long				philo_utils_atol(char *str);
 void				*philo_utils_calloc(size_t nmemb, size_t size);
+int					philo_utils_is_digit(char c);
+time_t				philo_utils_get_time(void);
 void				philo_utils_memcpy(void *dest, void *src, int size);
 void				philo_utils_memset(void *dest, char c, int size);
-void				philo_utils_ritoa(time_t time, char *dest);
+char				*philo_utils_ritoa(time_t n, char *dest);
 
 //exit
 int					philo_core_exit(t_data *data);
