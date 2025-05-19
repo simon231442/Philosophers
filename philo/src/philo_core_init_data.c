@@ -13,19 +13,20 @@
 #include "philo.h"
 
 /**
- * @brief Initialise la structure data avec les arguments et alloue la memoire.
+ * @brief Initialise la structure data avec les arguments et alloue la mémoire
  *
  * Cette fonction, appelée par main, récupère les arguments av
  * (préalablement validés) et les place dans la structure data.
  * 
  * Un memset initialise la structure à zéro
  * si ac == 6, meal_nb prendra la valeur de av[5]
- * si ac < 6, meal_nb sera à 0 (aucune contrainte sur le nombre de repas).
+ * si ac < 6, meal_nb sera à -1 (aucune contrainte sur le nombre de repas).
  * 
- * c'est ici que la memoire de la liste chainee de philosophers (t_philo) est
- * allouee et mise a 0 avec calloc
+ * C'est ici que la mémoire de la liste chaînée de philosophes (t_philo) est
+ * allouée et mise à 0 avec calloc.
  * 
- * init_counter est incrementer a chaque allocation memoire (util pour exit)
+ * init_counter est incrémenté à chaque allocation mémoire et initialisation
+ * de mutex (utile pour l'opération de nettoyage dans philo_core_exit).
  *
  * Détail des arguments :
  *   av[1] = number_of_philosophers
@@ -34,10 +35,10 @@
  *   av[4] = time_to_sleep (en ms) : durée du sommeil
  *   av[5] = number_of_times_each_philosopher_must_eat (argument optionnel)
  *
+* @param data Pointeur vers la structure à initialiser
  * @param ac Nombre total d'arguments
  * @param av Tableau des arguments
- * @param data Pointeur vers la structure à initialiser
- * @return 0 en cas de succès, 1 en cas d'échec d'allocation mémoire
+  * @return 0 en cas de succès, 1 en cas d'échec d'allocation mémoire
  */
 
 int	philo_core_init_data(t_data *data, int ac, char **av)
@@ -47,8 +48,11 @@ int	philo_core_init_data(t_data *data, int ac, char **av)
 	data->time_to_die = philo_utils_atol(av[2]);
 	data->time_to_eat = philo_utils_atol(av[3]);
 	data->time_to_sleep = philo_utils_atol(av[4]);
+	data->time_start = philo_utils_get_time() + DELAY_START;
 	if (ac == 6)
 		data->meal_nb = philo_utils_atol(av[5]);
+	else
+		data->meal_nb = -1;
 	if (pthread_mutex_init(&data->mutex[E_PRINT], NULL))
 		return (1);
 	data->init_counter++;

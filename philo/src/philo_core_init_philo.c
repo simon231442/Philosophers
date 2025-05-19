@@ -25,8 +25,8 @@
  * la liste chainee boucle (le dernier philo pointe sur le premier)
  *
  * - Les identifiants des philosophes vont de 1 à n.
- * - les fourchettes representes par un int sont set a 1.
- *   chaque philosophe a une fourchette (sa fourchette droite) dans sa struct
+ * - les fourchettes representes par un int sont set a 1 (disponible).
+ *   chaque philosophe a une fourchette
  * - meal_to_eat prend la valeur de meal_nb dans data.
  * - Chaque philosophe pointe sur la structure data (t_data)
  * - Cette fonction initie les mutex_fork.
@@ -52,9 +52,10 @@ static void	init_philo_first(t_data *data)
 {
 	data->philo_first->id = 1;
 	data->philo_first->fork = 1;
+	data->philo_cursor->time_last_eat = data->time_start;
 	data->philo_first->meal_to_eat = data->meal_nb;
 	data->philo_first->data = data;
-	data->philo_first->next = data->philo_first + sizeof(t_philo);
+	data->philo_first->next = data->philo_first + 1;
 }
 
 static void	init_philo_others(t_data *data)
@@ -67,7 +68,7 @@ static void	init_philo_others(t_data *data)
 			sizeof(t_philo));
 		data->philo_cursor = data->philo_cursor->next;
 		data->philo_cursor->id++;
-		data->philo_cursor->next += sizeof(t_philo);
+		data->philo_cursor->next++;
 	}
 	data->philo_cursor->next = data->philo_first;
 }

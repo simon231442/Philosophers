@@ -20,6 +20,9 @@
 # include <sys/time.h>
 
 # define INT_MAX 2147483647
+# define DELAY_START 200
+# define DELAY_LOOP 10
+# define DELAY_MULTIPLY 20
 
 # define TAKING "has taken a fork"
 # define TAKING_SIZE 16
@@ -66,6 +69,8 @@ typedef struct s_data
 	time_t			time_to_eat;
 	time_t			time_to_sleep;
 	int				meal_nb;
+	time_t			time_start;
+	int				simulation_over;
 	pthread_mutex_t	mutex[2];
 	t_print			action_print[5];
 	t_philo			*philo_first;
@@ -91,9 +96,18 @@ int					philo_inputs_are_valid(int ac, char **av);
 int					philo_core_init_data(t_data *data, int ac, char **av);
 int					philo_core_init_philo(t_data *data);
 void				philo_core_init_print(t_data *data);
+void				philo_core_thread_create_and_join(t_data *data);
 
 //action
 void				philo_action_print(t_philo *philo, int buffer_name);
+int					philo_action_is_simulation_running(t_philo *philo);
+void				*philo_action_routine(void *arg);
+int					philo_action_take_a_fork(t_philo *philo, int *fork,
+						pthread_mutex_t *mutex_fork);
+void				philo_action_leave_forks(t_philo *philo);
+int					philo_action_eat(t_philo *philo);
+void				philo_action_think(t_philo *philo);
+int					philo_action_sleep(t_philo *philo);
 
 //utils
 long				philo_utils_atol(char *str);

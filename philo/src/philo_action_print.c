@@ -21,7 +21,7 @@
 void	philo_action_print(t_philo *philo, int buffer_name)
 {
 	pthread_mutex_lock(&philo->data->mutex[E_PRINT]);
-	philo_utils_ritoa(philo->time_action,
+	philo_utils_ritoa(philo_utils_get_time() - philo->data->time_start,
 						philo->data->action_print[buffer_name].time_stamp);
 	philo_utils_ritoa(philo->id, philo->data->action_print[buffer_name].id);
 	write(1, &philo->data->action_print[buffer_name].time_stamp, BUFF_SIZE);

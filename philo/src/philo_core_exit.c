@@ -13,17 +13,22 @@
 #include "philo.h"
 
 /**
- * cette fonction appele dans le main en fin de programme ou en cas d'erreur
- * detruit les mutexs (mutex_fork, simulation_over, print)
- * libere la memoire des structures de philo
+ * @brief Libère les ressources allouées en fin de programme ou en cas d'erreur
+ *
+ * Cette fonction est appelée dans le main en fin de programme ou en cas d'erreur.
+ * Elle détruit tous les mutex (mutex_fork, simulation_over, print) et
+ * libère la mémoire allouée pour les structures de philosophes.
  * 
- * dans les fonctions d'inition la variable init_counter est incrementee a
- * chaque mutex initie et a chaque allocation de memoire, ainsi cela permet au
- * programme de savoir ce qui doit etre detruit ou free
- * 
- * le nombre maximal de init_counter = mutex simulation_over + mutex print
- * allocation memoire de la liste chainee + philo_nb * mutex_fork 
- * = 1 + 1 + 1 + philo_nb * 1 = 3 + philo_nb
+ * Dans les fonctions d'initialisation, la variable init_counter est incrémentée à
+ * chaque création de mutex et à chaque allocation de mémoire. Cela permet au
+ * programme de savoir ce qui doit être détruit ou libéré.
+ *
+ * La valeur maximale de init_counter = mutex simulation_over + mutex print +
+ * allocation mémoire de la liste chaînée + (philo_nb * mutex_fork)
+ * = 1 + 1 + 1 + philo_nb = 3 + philo_nb
+ *
+ * @param data Pointeur vers la structure principale du programme
+ * @return 1 pour indiquer la fin de l'opération
  */
 
 int	philo_core_exit(t_data *data)
