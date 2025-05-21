@@ -25,10 +25,11 @@ void	philo_core_thread_create_and_join(t_data *data)
 		if (data->philo_cursor == data->philo_first)
 			break;
 	}
-	pthread_mutex_lock(&data->mutex[E_SIMULATION_OVER]);
+	printf("init_counter = %d\n", data->init_counter);
+/*	pthread_mutex_lock(&data->mutex[E_SIMULATION_OVER]);
 	data->simulation_over = 1;
 	pthread_mutex_unlock(&data->mutex[E_SIMULATION_OVER]);
-	data->philo_cursor = data->philo_first;
+	data->philo_cursor = data->philo_first;*/
 	while (data->init_counter > 3 + data->philo_nb)
 	{
 		pthread_join(data->philo_cursor->thread, NULL);

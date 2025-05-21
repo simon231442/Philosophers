@@ -20,9 +20,10 @@
 # include <sys/time.h>
 
 # define INT_MAX 2147483647
-# define DELAY_START 200
-# define DELAY_LOOP 10
-# define DELAY_MULTIPLY 20
+// time is in microseconds
+# define DELAY_START 1
+# define DELAY_LOOP 1000
+# define DELAY_MULTIPLY 1
 
 # define TAKING "has taken a fork"
 # define TAKING_SIZE 16
@@ -120,4 +121,14 @@ char				*philo_utils_ritoa(time_t n, char *dest);
 
 //exit
 int					philo_core_exit(t_data *data);
+
+//debug
+#include <fcntl.h>
+typedef struct s_debug
+{
+	time_t			time_start;
+	time_t			time_bp;
+	int				fd;
+}			t_debug;
+extern t_debug	g_debug;
 #endif

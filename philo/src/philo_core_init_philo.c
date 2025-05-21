@@ -52,10 +52,11 @@ static void	init_philo_first(t_data *data)
 {
 	data->philo_first->id = 1;
 	data->philo_first->fork = 1;
-	data->philo_cursor->time_last_eat = data->time_start;
+	data->philo_first->time_last_eat = data->time_start;
 	data->philo_first->meal_to_eat = data->meal_nb;
 	data->philo_first->data = data;
 	data->philo_first->next = data->philo_first + 1;
+	
 }
 
 static void	init_philo_others(t_data *data)

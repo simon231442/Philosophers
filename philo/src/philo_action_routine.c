@@ -17,18 +17,19 @@ void	*philo_action_routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	while (philo_utils_get_time() < philo->data->time_start)
-		usleep(DELAY_LOOP);
+	//printf("1 id = %d\n", philo->id);
 	if (philo->id % 2 == 0) // si le philo est pair
 		usleep(philo->id * DELAY_MULTIPLY);
 	else
+	{
+		usleep(philo->data->philo_nb / 2 * DELAY_MULTIPLY);
 		usleep((philo->data->philo_nb - philo->id) * DELAY_MULTIPLY);
+	}
+	//printf("2 id = %d\n", philo->id);
 	while (philo->meal_to_eat != 0)
 	{
-		if (
-	philo_action_take_a_fork(philo, &philo->fork, &philo->mutex_fork)
-	|| philo_action_take_a_fork(philo, &philo->next->fork, 
-							&philo->next->mutex_fork)
+		if (philo_action_take_a_fork(philo, &philo->fork, &philo->mutex_fork)
+	|| philo_action_take_a_fork(philo, &philo->next->fork, &philo->next->mutex_fork)
 	|| philo_action_eat(philo))
 		return (NULL);
 		philo_action_leave_forks(philo);

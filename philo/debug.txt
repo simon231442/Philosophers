@@ -1,0 +1,5 @@
+test
+temps jusqu'au bp = -200 ms
+temps jusqu'au bp = -200 ms
+temps jusqu'au bp = 0 ms
+temps jusqu'au bp = 0 ms
