@@ -33,12 +33,12 @@ int	philo_input_is_valid(char *av);
 int	philo_inputs_are_valid(int ac, char **av)
 {
 	int	i;
-
+	
 	i = 1;
 	if (ac < 5 || ac > 6)
 	{
-		printf("Usage: ./philo [number of philo] [time to die] [time to eat] \
-		[time to sleep] [number of meal per philo]");
+		printf("Usage: ./philo [number of philo] [time to die] [time to eat]");
+		printf("[time to sleep] [number of meal per philo]");
 		return (0);
 	}
 	while (i < ac)

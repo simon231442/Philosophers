@@ -17,15 +17,13 @@ void	*philo_action_routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	//printf("1 id = %d\n", philo->id);
-	if (philo->id % 2 == 0) // si le philo est pair
+	if (philo->id % 2 != 0) // si le philo est impair
 		usleep(philo->id * DELAY_MULTIPLY);
 	else
 	{
-		usleep(philo->data->philo_nb / 2 * DELAY_MULTIPLY);
+		usleep(philo->data->time_to_eat / 2 * 1000);
 		usleep((philo->data->philo_nb - philo->id) * DELAY_MULTIPLY);
 	}
-	//printf("2 id = %d\n", philo->id);
 	while (philo->meal_to_eat != 0)
 	{
 		if (philo_action_take_a_fork(philo, &philo->fork, &philo->mutex_fork)

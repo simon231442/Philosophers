@@ -77,12 +77,14 @@ static void	init_philo_others(t_data *data)
 static int	init_mutex_philo(t_data *data)
 {
 	data->philo_cursor = data->philo_first;
-	while (data->philo_cursor != data->philo_first)
+	while (1)
 	{
 		if (pthread_mutex_init(&data->philo_cursor->mutex_fork, NULL))
 			return (1);
 		data->init_counter++;
 		data->philo_cursor = data->philo_cursor->next;
+		if (data->philo_cursor == data->philo_first)
+			break;
 	}
 	return (0);
 }

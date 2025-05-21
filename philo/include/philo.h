@@ -23,7 +23,7 @@
 // time is in microseconds
 # define DELAY_START 1
 # define DELAY_LOOP 1000
-# define DELAY_MULTIPLY 1
+# define DELAY_MULTIPLY 200
 
 # define TAKING "has taken a fork"
 # define TAKING_SIZE 16
