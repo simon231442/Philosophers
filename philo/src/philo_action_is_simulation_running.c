@@ -21,7 +21,7 @@ int	philo_action_is_simulation_running(t_philo *philo)
 		return (0);
 	}
 	if (philo_utils_get_time() - philo->time_last_eat
-		> philo->data->time_to_die )
+		> philo->data->time_to_die)
 	{
 		philo->data->simulation_over = 1;
 		philo_action_print(philo, E_DYING);

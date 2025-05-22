@@ -21,7 +21,7 @@
 
 # define INT_MAX 2147483647
 // time is in microseconds
-# define DELAY_START 1
+//# define DELAY_START 1
 # define DELAY_LOOP 1000
 # define DELAY_MULTIPLY 200
 
@@ -36,7 +36,7 @@
 # define DYING "died"
 # define DYING_SIZE 4
 # define BUFF_SIZE 80
-# define PRECISION_TIME 15
+# define PRECISION_TIME 9
 # define PRECISION_ID 6
 
 typedef enum e_mutex_name

@@ -56,7 +56,6 @@ static void	init_philo_first(t_data *data)
 	data->philo_first->meal_to_eat = data->meal_nb;
 	data->philo_first->data = data;
 	data->philo_first->next = data->philo_first + 1;
-	
 }
 
 static void	init_philo_others(t_data *data)
@@ -84,7 +83,7 @@ static int	init_mutex_philo(t_data *data)
 		data->init_counter++;
 		data->philo_cursor = data->philo_cursor->next;
 		if (data->philo_cursor == data->philo_first)
-			break;
+			break ;
 	}
 	return (0);
 }

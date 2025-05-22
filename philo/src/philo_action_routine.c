@@ -17,7 +17,7 @@ void	*philo_action_routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	if (philo->id % 2 != 0) // si le philo est impair
+	if (philo->id % 2 != 0)
 		usleep(philo->id * DELAY_MULTIPLY);
 	else
 	{
@@ -27,13 +27,14 @@ void	*philo_action_routine(void *arg)
 	while (philo->meal_to_eat != 0)
 	{
 		if (philo_action_take_a_fork(philo, &philo->fork, &philo->mutex_fork)
-	|| philo_action_take_a_fork(philo, &philo->next->fork, &philo->next->mutex_fork)
-	|| philo_action_eat(philo))
-		return (NULL);
+			|| philo_action_take_a_fork(philo, &philo->next->fork,
+				&philo->next->mutex_fork)
+			|| philo_action_eat(philo))
+			return (NULL);
 		philo_action_leave_forks(philo);
 		philo_action_think(philo);
 		if (philo_action_sleep(philo))
-		return (NULL);
+			return (NULL);
 	}
 	return (NULL);
 }

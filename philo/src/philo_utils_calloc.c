@@ -31,5 +31,5 @@ void	*philo_utils_calloc(size_t nmemb, size_t size)
 
 void	ft_bzero(void *s, size_t n)
 {
-	memset(s, 0, n);
+	philo_utils_memset(s, 0, n);
 }

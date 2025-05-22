@@ -35,10 +35,10 @@
  *   av[4] = time_to_sleep (en ms) : durée du sommeil
  *   av[5] = number_of_times_each_philosopher_must_eat (argument optionnel)
  *
-* @param data Pointeur vers la structure à initialiser
+ * @param data Pointeur vers la structure à initialiser
  * @param ac Nombre total d'arguments
  * @param av Tableau des arguments
-  * @return 0 en cas de succès, 1 en cas d'échec d'allocation mémoire
+ * @return 0 en cas de succès, 1 en cas d'échec d'allocation mémoire
  */
 
 int	philo_core_init_data(t_data *data, int ac, char **av)
@@ -48,7 +48,7 @@ int	philo_core_init_data(t_data *data, int ac, char **av)
 	data->time_to_die = philo_utils_atol(av[2]);
 	data->time_to_eat = philo_utils_atol(av[3]);
 	data->time_to_sleep = philo_utils_atol(av[4]);
-	data->time_start = philo_utils_get_time() + DELAY_START;
+	data->time_start = philo_utils_get_time() /*+ DELAY_START*/;
 	if (ac == 6)
 		data->meal_nb = philo_utils_atol(av[5]);
 	else

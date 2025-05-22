@@ -12,8 +12,6 @@
 
 #include "philo.h"
 
-t_debug g_debug; //debug
-
 int	main(int ac, char **av)
 {
 	t_data	data;

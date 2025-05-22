@@ -12,7 +12,7 @@
 
 #include "philo.h"
 
-int philo_action_sleep(t_philo *philo)
+int	philo_action_sleep(t_philo *philo)
 {
 	time_t	time_end;
 

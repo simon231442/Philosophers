@@ -33,7 +33,7 @@ int	philo_input_is_valid(char *av);
 int	philo_inputs_are_valid(int ac, char **av)
 {
 	int	i;
-	
+
 	i = 1;
 	if (ac < 5 || ac > 6)
 	{

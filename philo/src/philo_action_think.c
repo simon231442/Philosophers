@@ -12,7 +12,7 @@
 
 #include "philo.h"
 
-void philo_action_think(t_philo *philo)
+void	philo_action_think(t_philo *philo)
 {
 	philo_action_print(philo, E_THINKING);
 }
