@@ -16,17 +16,17 @@
  * @brief Initialise la structure data avec les arguments et alloue la mémoire
  *
  * Cette fonction, appelée par main, récupère les arguments av
- * (préalablement validés) et les place dans la structure data.
+ * (préalablement validés) et les place dans la structure data
  * 
  * Un memset initialise la structure à zéro
  * si ac == 6, meal_nb prendra la valeur de av[5]
- * si ac < 6, meal_nb sera à -1 (aucune contrainte sur le nombre de repas).
+ * si ac < 6, meal_nb sera à -1 (aucune contrainte sur le nombre de repas)
  * 
  * C'est ici que la mémoire de la liste chaînée de philosophes (t_philo) est
- * allouée et mise à 0 avec calloc.
+ * allouée et mise à 0 avec calloc
  * 
  * init_counter est incrémenté à chaque allocation mémoire et initialisation
- * de mutex (utile pour l'opération de nettoyage dans philo_core_exit).
+ * de mutex (utile pour l'opération de nettoyage dans philo_core_exit)
  *
  * Détail des arguments :
  *   av[1] = number_of_philosophers
@@ -48,7 +48,7 @@ int	philo_core_init_data(t_data *data, int ac, char **av)
 	data->time_to_die = philo_utils_atol(av[2]);
 	data->time_to_eat = philo_utils_atol(av[3]);
 	data->time_to_sleep = philo_utils_atol(av[4]);
-	data->time_start = philo_utils_get_time() /*+ DELAY_START*/;
+	data->time_start = philo_utils_get_time();
 	if (ac == 6)
 		data->meal_nb = philo_utils_atol(av[5]);
 	else

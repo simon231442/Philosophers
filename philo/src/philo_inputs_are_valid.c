@@ -15,15 +15,15 @@
 int	philo_input_is_valid(char *av);
 
 /**
- * @brief Vérifie la validité des arguments passés au programme principal.
+ * @brief Vérifie la validité des arguments passés au programme principal
  *
  * Cette fonction, appelée par main, contrôle :
  *  - Que le nombre d'arguments est correct (5 ou 6)
  *  - Que chaque argument est un entier positif valide, en appelant
- *    philo_input_is_valid.
+ *    philo_input_is_valid
  *
  * Si un argument est invalide, un message d'erreur est affiché et le programme
- * est interrompu dans main.
+ * est interrompu dans main
  *
  * @param ac Nombre total d'arguments
  * @param av Tableau des arguments

@@ -25,16 +25,11 @@
 # define DELAY_MULTIPLY 200
 
 # define TAKING "has taken a fork"
-# define TAKING_SIZE 16
 # define EATING "is eating"
-# define EATING_SIZE 9
 # define SLEEPING "is sleeping"
-# define SLEEPING_SIZE 11
 # define THINKING "is thinking"
-# define THINKING_SIZE 11
 # define DYING "died"
-# define DYING_SIZE 4
-# define BUFF_SIZE 80
+# define BUFF_SIZE 40
 # define PRECISION_TIME 9
 # define PRECISION_ID 6
 
@@ -95,7 +90,8 @@ typedef struct s_philo
 int					philo_inputs_are_valid(int ac, char **av);
 int					philo_core_init_data(t_data *data, int ac, char **av);
 int					philo_core_init_philo(t_data *data);
-void				philo_core_init_print(t_data *data);
+void				philo_action_print(t_philo *philo, int buffer_name);
+void				philo_action_print_color(t_philo *philo, int buffer_name);
 void				philo_core_thread_create_and_join(t_data *data);
 
 //action
@@ -116,9 +112,10 @@ int					philo_utils_is_digit(char c);
 time_t				philo_utils_get_time(void);
 void				philo_utils_memcpy(void *dest, void *src, int size);
 void				philo_utils_memset(void *dest, char c, int size);
+int					philo_utils_strlen(char *str);
 char				*philo_utils_ritoa(time_t n, char *dest);
 
 //exit
-int					philo_core_exit(t_data *data);
 
+int					philo_core_exit(t_data *data);
 #endif

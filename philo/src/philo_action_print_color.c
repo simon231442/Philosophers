@@ -33,11 +33,16 @@
  * @param buffer_name  Indice du buffer/action
  *                     (E_TAKING, E_EATING, E_SLEEPING, E_THINKING ou E_DYING).
  */
-void	philo_action_print(t_philo *philo, int buffer_name)
+void	philo_action_print_color(t_philo *philo, int buffer_name)
 {
-	#ifdef color
-		philo_action_print_color(philo, buffer_name),
-	#else
+	static char	shift_buff[40]= "                                        ";
+	static int	up_or_down = 1;
+	static int	shift = 0;
+	
+	if (shift > philo->data->philo_nb || shift >= 40 || shift <= 0)
+		up_or_down *= -1;
+	write(1, shift_buff, shift);
+	shift += up_or_down;
 	pthread_mutex_lock(&philo->data->mutex[E_PRINT]);
 	philo_utils_ritoa(philo_utils_get_time() - philo->data->time_start,
 		philo->data->action_print[buffer_name].time_stamp);
@@ -46,5 +51,4 @@ void	philo_action_print(t_philo *philo, int buffer_name)
 	philo_utils_memset(philo->data->action_print[buffer_name].time_stamp,
 		' ', PRECISION_TIME + PRECISION_ID);
 	pthread_mutex_unlock(&philo->data->mutex[E_PRINT]);
-	#endif
 }

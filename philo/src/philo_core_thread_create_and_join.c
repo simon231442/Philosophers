@@ -12,6 +12,21 @@
 
 #include "philo.h"
 
+/**
+ * @brief Crée et joint les threads des philosophes.
+ *
+ * le main appel cette fonction pour créer les threads, puis les joindre
+ * un thread par philosophe est cree en appelant, la fct philo_action_routine
+ * 
+ * A chaque fois qu'un thread est cree, init_counter est incremente ainsi en cas
+ * d'erreur de creation de thread, le nombre exact de threads est joint.
+ * 
+ * le thread est joint lorsque philo_routine est termine, c'est a dire lorsque
+ * cette derniere fonction retourne NULL.
+ *
+ * @param data Pointeur vers la structure de données principale.
+ */
+
 void	philo_core_thread_create_and_join(t_data *data)
 {
 	data->philo_cursor = data->philo_first;
@@ -25,6 +40,7 @@ void	philo_core_thread_create_and_join(t_data *data)
 		if (data->philo_cursor == data->philo_first)
 			break ;
 	}
+	data->philo_cursor = data->philo_first;
 	while (data->init_counter > 3 + data->philo_nb)
 	{
 		pthread_join(data->philo_cursor->thread, NULL);

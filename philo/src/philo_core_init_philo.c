@@ -13,23 +13,23 @@
 #include "philo.h"
 
 /**
- * @brief Initialise les structures t_philo pour chaque philosophe.
+ * @brief Initialise les structures t_philo pour chaque philosophe
  *
  * Cette fonction, appelée par main, initialise la liste chainee de structures
- * t_philo dont la mémoire a été allouée précédemment dans philo_core_init_data.
+ * t_philo dont la mémoire a été allouée précédemment dans philo_core_init_data
  * 
  * le premier philo est initie, puis le suivant est une copie du premier avec
  * certaines valeurs changees, le sur-suivant est une copie du precedent,
- * ainsi de suite jusqu'au dernier.
+ * ainsi de suite jusqu'au dernier
  * 
  * la liste chainee boucle (le dernier philo pointe sur le premier)
  *
  * - Les identifiants des philosophes vont de 1 à n.
- * - les fourchettes representes par un int sont set a 1 (disponible).
+ * - les fourchettes representes par un int sont set a 1 (disponible)
  *   chaque philosophe a une fourchette
- * - meal_to_eat prend la valeur de meal_nb dans data.
+ * - meal_to_eat prend la valeur de meal_nb dans data
  * - Chaque philosophe pointe sur la structure data (t_data)
- * - Cette fonction initie les mutex_fork.
+ * - Cette fonction initie les mutex_fork
  * 
  * @param data Pointeur vers la structure principale contenant les philosophes
  * @return 0 en cas de succès, 1 en cas d'échec d'initiation d'un mutex

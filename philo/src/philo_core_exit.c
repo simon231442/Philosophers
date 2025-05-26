@@ -17,11 +17,11 @@
  *
  * Cette fonction est appelée par le main en fin de programme ou en cas d'erreur
  * Elle détruit tous les mutex (mutex_fork, simulation_over, print) et
- * libère la mémoire allouée pour les structures de philosophes.
+ * libère la mémoire allouée pour les structures de philosophes
  * 
  * Dans les fonctions d'initialisation, la variable init_counter est incrémentée
  * à chaque création de mutex et à chaque allocation de mémoire. Cela permet au
- * programme de savoir ce qui doit être détruit ou libéré.
+ * programme de savoir ce qui doit être détruit ou libéré
  *
  * La valeur maximale de init_counter = mutex simulation_over + mutex print +
  * allocation mémoire de la liste chaînée + (philo_nb * mutex_fork)
