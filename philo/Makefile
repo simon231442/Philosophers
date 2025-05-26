@@ -14,7 +14,7 @@ SRC += $(SRC_DIR)/philo_action_eat.c
 SRC += $(SRC_DIR)/philo_action_is_simulation_running.c
 SRC += $(SRC_DIR)/philo_action_leave_forks.c
 SRC += $(SRC_DIR)/philo_action_print.c
-SRC += $(SRC_DIR)/philo_action_print.c
+SRC += $(SRC_DIR)/philo_action_print_color.c
 SRC += $(SRC_DIR)/philo_action_routine.c
 SRC += $(SRC_DIR)/philo_action_sleep.c
 SRC += $(SRC_DIR)/philo_action_take_a_fork.c
@@ -66,8 +66,11 @@ fclean: clean
 
 re: clean all
 
-color:
-	fclean
+color: fclean init
+	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(BIN_DIR)
+	@$(MAKE) $(NAME) CFLAG="$(CFLAG) -DCOLOR"
+	@echo "binary created with color"
 
 ################################################################################
 #                               OBJS & RULES                                   #

@@ -35,15 +35,15 @@
  */
 void	philo_action_print_color(t_philo *philo, int buffer_name)
 {
-	static char	shift_buff[40]= "                                        ";
+	static char	shift_buff[40] = "                                        ";
 	static int	up_or_down = 1;
 	static int	shift = 0;
-	
+
+	pthread_mutex_lock(&philo->data->mutex[E_PRINT]);
 	if (shift > philo->data->philo_nb || shift >= 40 || shift <= 0)
 		up_or_down *= -1;
 	write(1, shift_buff, shift);
 	shift += up_or_down;
-	pthread_mutex_lock(&philo->data->mutex[E_PRINT]);
 	philo_utils_ritoa(philo_utils_get_time() - philo->data->time_start,
 		philo->data->action_print[buffer_name].time_stamp);
 	philo_utils_ritoa(philo->id, philo->data->action_print[buffer_name].id);

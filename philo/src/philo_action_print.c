@@ -35,8 +35,9 @@
  */
 void	philo_action_print(t_philo *philo, int buffer_name)
 {
-	#ifdef color
-		philo_action_print_color(philo, buffer_name),
+	#ifdef COLOR
+		philo_action_print_color(philo, buffer_name);
+		return ;
 	#else
 	pthread_mutex_lock(&philo->data->mutex[E_PRINT]);
 	philo_utils_ritoa(philo_utils_get_time() - philo->data->time_start,

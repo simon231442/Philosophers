@@ -90,6 +90,7 @@ typedef struct s_philo
 int					philo_inputs_are_valid(int ac, char **av);
 int					philo_core_init_data(t_data *data, int ac, char **av);
 int					philo_core_init_philo(t_data *data);
+void				philo_core_init_print(t_print *buffer);
 void				philo_action_print(t_philo *philo, int buffer_name);
 void				philo_action_print_color(t_philo *philo, int buffer_name);
 void				philo_core_thread_create_and_join(t_data *data);
