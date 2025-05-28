@@ -13,7 +13,12 @@
 #include "philo.h"
 
 /**
- * @return fct qui renvoi l'horodatage en millisecondes (l'heure)
+ * @brief Retourne l'heure actuelle en millisecondes.
+ *
+ * Utilise gettimeofday() pour récupérer le temps système,
+ * puis convertit les secondes et microsecondes en millisecondes.
+ *
+ * @return time_t Horodatage en millisecondes depuis l'époque UNIX.
  */
 
 time_t	philo_utils_get_time(void)

@@ -12,6 +12,15 @@
 
 #include "philo.h"
 
+/**
+ * @brief Signale un philosophe en phase de réflexion.
+ *
+ * Fonction appelée par philo_action_routine pour afficher
+ * l'état de réflexion du philosophe via philo_action_print(E_THINKING).
+ *
+ * @param philo  Pointeur vers la structure t_philo du philosophe courant.
+ */
+
 void	philo_action_think(t_philo *philo)
 {
 	philo_action_print(philo, E_THINKING);

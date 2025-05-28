@@ -13,19 +13,26 @@
 #include "philo.h"
 
 /**
- * @brief Routine principale de chaque philosophe.
- * 
- * fonction qui est executee a la creation de chaque thread. 
- * 
- * Un temps d'attente dependant de l'ID du philosophe est defini pour fluidifier
- * l'echange des fourchettes :
- * - les philosophes impairs seront les premiers a prendre les fourchettes
- *   (il y a aussi un temps d'attente entre chaque philosophe)
- * - les philosophes pairs attendront la moitie du temps de repas avant
- *   d'entreprendre de prendre une fourchette.
- * les philosophes pairs sont sequencer par ordre croissant de leur ID tandis
- * que les philosophes impairs sont sequencer par ordre decroissant de leur ID
- * 
+ * @brief Cycle de vie d'un philosophe dans son thread.
+ *
+ * Cette fonction gère en boucle les actions successives :
+ *   - Prise des fourchettes
+ *   - Repas
+ *   - Dépose des fourchettes
+ *   - Réflexion
+ *   - Sommeil
+ *
+ * Synchronisation initiale :
+ *   - Philosophes impairs : délai de démarrage = id * DELAY_MULTIPLY
+ *   - Philosophes pairs   : attente de la moitié du time_to_eat,
+ *                          puis (philo_nb - id) * DELAY_MULTIPLY
+ *
+ * La boucle se termine lorsque :
+ *   - Une fonction d'action retourne NULL (fin de simulation)
+ *   - Le nombre de repas requis (meal_to_eat) atteint 0
+ *
+ * @param arg  Pointeur vers la structure t_philo du philosophe courant.
+ * @return     NULL à la sortie de la routine.
  */
 
 void	*philo_action_routine(void *arg)

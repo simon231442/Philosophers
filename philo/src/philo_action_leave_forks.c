@@ -12,6 +12,17 @@
 
 #include "philo.h"
 
+/**
+ * @brief Libère de façon thread-safe les deux fourchettes d'un philosophe.
+ *
+ * Cette fonction est appelée après la phase de repas et :
+ *   - Verrouille le mutex de la fourchette du philosophe, marque fork = 1,
+ *     puis déverrouille.
+ *   - Verrouille le mutex de la fourchette du philosophe suivant,
+ *     marque fork = 1, puis déverrouille.
+ * @param philo  Pointeur vers le philosophe courant (forks et mutex).
+ */
+
 void	philo_action_leave_forks(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->mutex_fork);

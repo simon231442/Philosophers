@@ -12,6 +12,21 @@
 
 #include "philo.h"
 
+/**
+ * @brief Fait manger un philosophe pendant une durée définie (time_to_eat)
+ *
+ * Cette fonction, appelée par la philo_action_routine gère l'action de repas :
+ *   - Met à jour le timestamp du dernier repas
+ *   - Décrémente le compteur de repas restants
+ *   - Affiche l'action via philo_action_print
+ *   - Attend en boucle jusqu'à la fin du temps de repas,
+ *     tout en vérifiant que la simulation est toujours active
+ *
+ * @param philo  Pointeur vers le philosophe courant
+ * @return       0 si le repas s'est terminé normalement
+ *               1 si la simulation se termine prématurément (philosophe mort)
+ */
+
 int	philo_action_eat(t_philo *philo)
 {
 	time_t	time_end;

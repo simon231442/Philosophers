@@ -12,6 +12,26 @@
 
 #include "philo.h"
 
+/**
+ * @brief Point d'entrée de la simulation
+ *
+ * Cette fonction gère les initialisations et lance la simulation :
+ *   - Vérifie la validité des arguments
+ *   - Initialise les données globales et les philosophes
+ *   - Prépare les buffers d'affichage
+ *   - Lance les threads des philosophes et attend leur fin
+ *   - Détruit les mutex et libère les ressources
+ *
+ * @param ac  Nombre d'arguments (doit être 5 ou 6)
+ * @param av  Tableau des arguments :
+ *            [1] philo_nb,
+ *            [2] time_to_die,
+ *            [3] time_to_eat,
+ *            [4] time_to_sleep,
+ *            [5] [optionnel] number_of_meals
+ * @return    0 si succès, 1 en cas d'erreur d'arguments ou d'initialisation
+ */
+
 int	main(int ac, char **av)
 {
 	t_data	data;

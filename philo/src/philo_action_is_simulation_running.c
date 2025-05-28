@@ -12,6 +12,22 @@
 
 #include "philo.h"
 
+/**
+ * @brief Vérifie si la simulation est active.
+ *
+ * Cette fonction :
+ *   - Verrouille le mutex E_SIMULATION_OVER pour synchroniser l'accès
+ *   - Si la simulation est déjà terminée (simulation_over == 1),
+ *     déverrouille et retourne 0
+ *   - Sinon, calcule le temps écoulé depuis le dernier repas (du philosophe) :
+ *     Si ce délai dépasse time_to_die, déclenche la fin de simulation
+ *     (simulation_over passe de 0 à 1) et affiche E_DYING
+ *   - Déverrouille le mutex avant de retourner
+ *
+ * @param philo  Pointeur vers le philosophe courant.
+ * @return       1 si la simulation continue, 0 si elle est terminée
+ */
+
 int	philo_action_is_simulation_running(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->data->mutex[E_SIMULATION_OVER]);
